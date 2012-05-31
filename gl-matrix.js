@@ -1,12 +1,13 @@
 /**
- * @fileoverview gl-matrix - High performance matrix and vector operations for WebGL
+ * @fileoverview gl-matrix-altered - High performance matrix and vector operations for WebGL
  * @author Brandon Jones
  * @author Colin MacKenzie IV
- * @version 1.3.5
+ * @author Aapo Laitinen
+ * @version 1.3.5-altered
  */
 
 /*
- * Copyright (c) 2012 Brandon Jones, Colin MacKenzie IV
+ * Copyright (c) 2012 Brandon Jones, Colin MacKenzie IV, Aapo Laitinen
  *
  * This software is provided 'as-is', without any express or implied
  * warranty. In no event will the authors be held liable for any damages
@@ -29,6 +30,9 @@
  */
 
 // Updated to use a modification of the "returnExportsGlobal" pattern from https://github.com/umdjs/umd
+
+// Altered by Aapo Laitinen with:
+// - Convenience function to set all values of vec3 and vec4
 
 (function (root, factory) {
     if (typeof exports === 'object') {
@@ -163,6 +167,23 @@
 
         return dest;
     };
+
+	/**
+	 * Sets the contents of vec3 to match parameters
+	 *
+	 * @param {number} x New x value
+	 * @param {number} y New y value
+	 * @param {number} z New z value
+	 * @param {vec3} dest vec3 receiving the values
+	 *
+	 * @returns {vec3} dest
+	 */
+	vec3.values = function(x, y, z, dest) {
+		dest[0] = x;
+		dest[1] = y;
+		dest[2] = z;
+		return dest;
+	};
 
     /**
      * Performs a vector addition
@@ -3229,6 +3250,25 @@
         dest[3] = vec[3];
         return dest;
     };
+
+	/**
+	 * Set the values of vec4
+	 *
+	 * @param {number} x The new x value
+	 * @param {number} y The new y value
+	 * @param {number} z The new z value
+	 * @param {number} w The new w value
+	 * @param {vec4} dest vec4 receiving new values
+	 *
+	 * @returns {vec4} dest
+	 */
+	vec4.values = function (x, y, z, w, dest) {
+		dest[0] = x;
+		dest[1] = y;
+		dest[2] = z;
+		dest[3] = w;
+		return dest;
+	};
 
     /**
      * Negates the components of a vec4
