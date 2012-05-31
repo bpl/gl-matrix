@@ -34,6 +34,7 @@
 // Altered by Aapo Laitinen with:
 // - Convenience function to set all values of vec3 and vec4
 // - Convenience function to transform vec3 representing a normal with a met4 (multiplyNormal3)
+// - Convenience function to normalize vec4 (ignoring w component)
 
 (function (root, factory) {
     if (typeof exports === 'object') {
@@ -3257,6 +3258,44 @@
       dest[3] = vecA[3] * scalar;
       return dest;
     };
+
+	/**
+	 * Generates a unit vector of the same direction as the provided vec4
+	 * The fourth component (w) remains unaffected
+	 * If vector length is 0, returns [0, 0, 0, 0]
+	 *
+	 * @param {vec4} vec vec4 to normalize
+	 * @param {vec4} [dest] vec4 receiving operation result. If not specified result is written to vec
+	 *
+	 * @returns {vec4} dest if specified, vec otherwise
+	 */
+	vec4.normalize = function (vec, dest) {
+		if (!dest) { dest = vec; }
+
+		var x = vec[0], y = vec[1], z = vec[2], w = vec[3],
+			len = Math.sqrt(x * x + y * y + z * z);
+
+		if (!len) {
+			dest[0] = 0;
+			dest[1] = 0;
+			dest[2] = 0;
+			dest[3] = 0;
+			return dest;
+		} else if (len === 1) {
+			dest[0] = x;
+			dest[1] = y;
+			dest[2] = z;
+			dest[3] = w;
+			return dest;
+		}
+
+		len = 1 / len;
+		dest[0] = x * len;
+		dest[1] = y * len;
+		dest[2] = z * len;
+		dest[3] = w;
+		return dest;
+	};
 
     /**
      * Copies the values of one vec4 to another
