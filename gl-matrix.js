@@ -33,6 +33,7 @@
 
 // Altered by Aapo Laitinen with:
 // - Convenience function to set all values of vec3 and vec4
+// - Convenience function to transform vec3 representing a normal with a met4 (multiplyNormal3)
 
 (function (root, factory) {
     if (typeof exports === 'object') {
@@ -1327,6 +1328,28 @@
 
         return dest;
     };
+
+	/**
+	 * Transforms a vec3 representing a normal with the given matrix
+	 * 4th vector component is implicitly '0'
+	 *
+	 * @param {mat4} mat mat4 to transform the vector with
+	 * @param {vec3} vec vec3 to transform
+	 * @param {vec3} [dest] vec3 receiving operation result. If not specified result is written to vec
+	 *
+	 * @returns {vec3} dest if specified, vec otherwise
+	 */
+	mat4.multiplyNormal3 = function(mat, vec, dest) {
+		if(!dest) { dest = vec }
+
+		var x = vec[0], y = vec[1], z = vec[2];
+
+		dest[0] = mat[0]*x + mat[4]*y + mat[8]*z;
+		dest[1] = mat[1]*x + mat[5]*y + mat[9]*z;
+		dest[2] = mat[2]*x + mat[6]*y + mat[10]*z;
+
+		return dest;
+	};
 
     /**
      * Transforms a vec4 with the given matrix
