@@ -171,22 +171,22 @@
         return dest;
     };
 
-	/**
-	 * Sets the contents of vec3 to match parameters
-	 *
-	 * @param {number} x New x value
-	 * @param {number} y New y value
-	 * @param {number} z New z value
-	 * @param {vec3} dest vec3 receiving the values
-	 *
-	 * @returns {vec3} dest
-	 */
-	vec3.values = function(x, y, z, dest) {
-		dest[0] = x;
-		dest[1] = y;
-		dest[2] = z;
-		return dest;
-	};
+    /**
+     * Sets the contents of vec3 to match parameters
+     *
+     * @param {number} x New x value
+     * @param {number} y New y value
+     * @param {number} z New z value
+     * @param {vec3} dest vec3 receiving the values
+     *
+     * @returns {vec3} dest
+     */
+    vec3.values = function(x, y, z, dest) {
+        dest[0] = x;
+        dest[1] = y;
+        dest[2] = z;
+        return dest;
+    };
 
     /**
      * Performs a vector addition
@@ -1331,27 +1331,27 @@
         return dest;
     };
 
-	/**
-	 * Transforms a vec3 representing a normal with the given matrix
-	 * 4th vector component is implicitly '0'
-	 *
-	 * @param {mat4} mat mat4 to transform the vector with
-	 * @param {vec3} vec vec3 to transform
-	 * @param {vec3} [dest] vec3 receiving operation result. If not specified result is written to vec
-	 *
-	 * @returns {vec3} dest if specified, vec otherwise
-	 */
-	mat4.multiplyNormal3 = function(mat, vec, dest) {
-		if(!dest) { dest = vec }
+    /**
+     * Transforms a vec3 representing a normal with the given matrix
+     * 4th vector component is implicitly '0'
+     *
+     * @param {mat4} mat mat4 to transform the vector with
+     * @param {vec3} vec vec3 to transform
+     * @param {vec3} [dest] vec3 receiving operation result. If not specified result is written to vec
+     *
+     * @returns {vec3} dest if specified, vec otherwise
+     */
+    mat4.multiplyNormal3 = function(mat, vec, dest) {
+        if(!dest) { dest = vec }
 
-		var x = vec[0], y = vec[1], z = vec[2];
+        var x = vec[0], y = vec[1], z = vec[2];
 
-		dest[0] = mat[0]*x + mat[4]*y + mat[8]*z;
-		dest[1] = mat[1]*x + mat[5]*y + mat[9]*z;
-		dest[2] = mat[2]*x + mat[6]*y + mat[10]*z;
+        dest[0] = mat[0]*x + mat[4]*y + mat[8]*z;
+        dest[1] = mat[1]*x + mat[5]*y + mat[9]*z;
+        dest[2] = mat[2]*x + mat[6]*y + mat[10]*z;
 
-		return dest;
-	};
+        return dest;
+    };
 
     /**
      * Transforms a vec4 with the given matrix
@@ -1413,49 +1413,49 @@
         return dest;
     };
 
-	/**
-	 * Translates a matrix by the given vector
-	 *
-	 * @param {mat4} mat mat4 to translate
-	 * @param {number} x the amount of x translation
-	 * @param {number} y the amount of y translation
-	 * @param {number} z the amount of z translation
-	 * @param {mat4} [dest] mat4 receiving operation result. If not specified result is written to mat
-	 *
-	 * @returns {mat4} dest if specified, mat otherwise
-	 */
-	mat4.translateVal = function(mat, x, y, z, dest) {
-		if(!dest || mat == dest) {
-			mat[12] = mat[0]*x + mat[4]*y + mat[8]*z + mat[12];
-			mat[13] = mat[1]*x + mat[5]*y + mat[9]*z + mat[13];
-			mat[14] = mat[2]*x + mat[6]*y + mat[10]*z + mat[14];
-			mat[15] = mat[3]*x + mat[7]*y + mat[11]*z + mat[15];
-			return mat;
-		}
+    /**
+     * Translates a matrix by the given vector
+     *
+     * @param {mat4} mat mat4 to translate
+     * @param {number} x the amount of x translation
+     * @param {number} y the amount of y translation
+     * @param {number} z the amount of z translation
+     * @param {mat4} [dest] mat4 receiving operation result. If not specified result is written to mat
+     *
+     * @returns {mat4} dest if specified, mat otherwise
+     */
+    mat4.translateVal = function(mat, x, y, z, dest) {
+        if(!dest || mat == dest) {
+            mat[12] = mat[0]*x + mat[4]*y + mat[8]*z + mat[12];
+            mat[13] = mat[1]*x + mat[5]*y + mat[9]*z + mat[13];
+            mat[14] = mat[2]*x + mat[6]*y + mat[10]*z + mat[14];
+            mat[15] = mat[3]*x + mat[7]*y + mat[11]*z + mat[15];
+            return mat;
+        }
 
-		var a00 = mat[0], a01 = mat[1], a02 = mat[2], a03 = mat[3];
-		var a10 = mat[4], a11 = mat[5], a12 = mat[6], a13 = mat[7];
-		var a20 = mat[8], a21 = mat[9], a22 = mat[10], a23 = mat[11];
+        var a00 = mat[0], a01 = mat[1], a02 = mat[2], a03 = mat[3];
+        var a10 = mat[4], a11 = mat[5], a12 = mat[6], a13 = mat[7];
+        var a20 = mat[8], a21 = mat[9], a22 = mat[10], a23 = mat[11];
 
-		dest[0] = a00;
-		dest[1] = a01;
-		dest[2] = a02;
-		dest[3] = a03;
-		dest[4] = a10;
-		dest[5] = a11;
-		dest[6] = a12;
-		dest[7] = a13;
-		dest[8] = a20;
-		dest[9] = a21;
-		dest[10] = a22;
-		dest[11] = a23;
+        dest[0] = a00;
+        dest[1] = a01;
+        dest[2] = a02;
+        dest[3] = a03;
+        dest[4] = a10;
+        dest[5] = a11;
+        dest[6] = a12;
+        dest[7] = a13;
+        dest[8] = a20;
+        dest[9] = a21;
+        dest[10] = a22;
+        dest[11] = a23;
 
-		dest[12] = a00*x + a10*y + a20*z + mat[12];
-		dest[13] = a01*x + a11*y + a21*z + mat[13];
-		dest[14] = a02*x + a12*y + a22*z + mat[14];
-		dest[15] = a03*x + a13*y + a23*z + mat[15];
-		return dest;
-	};
+        dest[12] = a00*x + a10*y + a20*z + mat[12];
+        dest[13] = a01*x + a11*y + a21*z + mat[13];
+        dest[14] = a02*x + a12*y + a22*z + mat[14];
+        dest[15] = a03*x + a13*y + a23*z + mat[15];
+        return dest;
+    };
 
     /**
      * Scales a matrix by the given vector
@@ -1504,52 +1504,52 @@
         return dest;
     };
 
-	/**
-	 * Scales a matrix by the given vector
-	 *
-	 * @param {mat4} mat mat4 to scale
-	 * @param {number} x the scale for x axis
-	 * @param {number} y the scale for y axis
-	 * @param {number} z the scale for z axis
-	 * @param {mat4} [dest] mat4 receiving operation result. If not specified result is written to mat
-	 *
-	 * @param {mat4} dest if specified, mat otherwise
-	 */
-	mat4.scaleVal = function(mat, x, y, z, dest) {
-		if(!dest || mat == dest) {
-			mat[0] *= x;
-			mat[1] *= x;
-			mat[2] *= x;
-			mat[3] *= x;
-			mat[4] *= y;
-			mat[5] *= y;
-			mat[6] *= y;
-			mat[7] *= y;
-			mat[8] *= z;
-			mat[9] *= z;
-			mat[10] *= z;
-			mat[11] *= z;
-			return mat;
-		}
+    /**
+     * Scales a matrix by the given vector
+     *
+     * @param {mat4} mat mat4 to scale
+     * @param {number} x the scale for x axis
+     * @param {number} y the scale for y axis
+     * @param {number} z the scale for z axis
+     * @param {mat4} [dest] mat4 receiving operation result. If not specified result is written to mat
+     *
+     * @param {mat4} dest if specified, mat otherwise
+     */
+    mat4.scaleVal = function(mat, x, y, z, dest) {
+        if(!dest || mat == dest) {
+            mat[0] *= x;
+            mat[1] *= x;
+            mat[2] *= x;
+            mat[3] *= x;
+            mat[4] *= y;
+            mat[5] *= y;
+            mat[6] *= y;
+            mat[7] *= y;
+            mat[8] *= z;
+            mat[9] *= z;
+            mat[10] *= z;
+            mat[11] *= z;
+            return mat;
+        }
 
-		dest[0] = mat[0]*x;
-		dest[1] = mat[1]*x;
-		dest[2] = mat[2]*x;
-		dest[3] = mat[3]*x;
-		dest[4] = mat[4]*y;
-		dest[5] = mat[5]*y;
-		dest[6] = mat[6]*y;
-		dest[7] = mat[7]*y;
-		dest[8] = mat[8]*z;
-		dest[9] = mat[9]*z;
-		dest[10] = mat[10]*z;
-		dest[11] = mat[11]*z;
-		dest[12] = mat[12];
-		dest[13] = mat[13];
-		dest[14] = mat[14];
-		dest[15] = mat[15];
-		return dest;
-	};
+        dest[0] = mat[0]*x;
+        dest[1] = mat[1]*x;
+        dest[2] = mat[2]*x;
+        dest[3] = mat[3]*x;
+        dest[4] = mat[4]*y;
+        dest[5] = mat[5]*y;
+        dest[6] = mat[6]*y;
+        dest[7] = mat[7]*y;
+        dest[8] = mat[8]*z;
+        dest[9] = mat[9]*z;
+        dest[10] = mat[10]*z;
+        dest[11] = mat[11]*z;
+        dest[12] = mat[12];
+        dest[13] = mat[13];
+        dest[14] = mat[14];
+        dest[15] = mat[15];
+        return dest;
+    };
 
     /**
      * Rotates a matrix by the given angle around the specified axis
@@ -3351,43 +3351,43 @@
       return dest;
     };
 
-	/**
-	 * Generates a unit vector of the same direction as the provided vec4
-	 * The fourth component (w) remains unaffected
-	 * If vector length is 0, returns [0, 0, 0, 0]
-	 *
-	 * @param {vec4} vec vec4 to normalize
-	 * @param {vec4} [dest] vec4 receiving operation result. If not specified result is written to vec
-	 *
-	 * @returns {vec4} dest if specified, vec otherwise
-	 */
-	vec4.normalize = function (vec, dest) {
-		if (!dest) { dest = vec; }
+    /**
+     * Generates a unit vector of the same direction as the provided vec4
+     * The fourth component (w) remains unaffected
+     * If vector length is 0, returns [0, 0, 0, 0]
+     *
+     * @param {vec4} vec vec4 to normalize
+     * @param {vec4} [dest] vec4 receiving operation result. If not specified result is written to vec
+     *
+     * @returns {vec4} dest if specified, vec otherwise
+     */
+    vec4.normalize = function (vec, dest) {
+        if (!dest) { dest = vec; }
 
-		var x = vec[0], y = vec[1], z = vec[2], w = vec[3],
-			len = Math.sqrt(x * x + y * y + z * z);
+        var x = vec[0], y = vec[1], z = vec[2], w = vec[3],
+            len = Math.sqrt(x * x + y * y + z * z);
 
-		if (!len) {
-			dest[0] = 0;
-			dest[1] = 0;
-			dest[2] = 0;
-			dest[3] = 0;
-			return dest;
-		} else if (len === 1) {
-			dest[0] = x;
-			dest[1] = y;
-			dest[2] = z;
-			dest[3] = w;
-			return dest;
-		}
+        if (!len) {
+            dest[0] = 0;
+            dest[1] = 0;
+            dest[2] = 0;
+            dest[3] = 0;
+            return dest;
+        } else if (len === 1) {
+            dest[0] = x;
+            dest[1] = y;
+            dest[2] = z;
+            dest[3] = w;
+            return dest;
+        }
 
-		len = 1 / len;
-		dest[0] = x * len;
-		dest[1] = y * len;
-		dest[2] = z * len;
-		dest[3] = w;
-		return dest;
-	};
+        len = 1 / len;
+        dest[0] = x * len;
+        dest[1] = y * len;
+        dest[2] = z * len;
+        dest[3] = w;
+        return dest;
+    };
 
     /**
      * Copies the values of one vec4 to another
@@ -3405,24 +3405,24 @@
         return dest;
     };
 
-	/**
-	 * Set the values of vec4
-	 *
-	 * @param {number} x The new x value
-	 * @param {number} y The new y value
-	 * @param {number} z The new z value
-	 * @param {number} w The new w value
-	 * @param {vec4} dest vec4 receiving new values
-	 *
-	 * @returns {vec4} dest
-	 */
-	vec4.values = function (x, y, z, w, dest) {
-		dest[0] = x;
-		dest[1] = y;
-		dest[2] = z;
-		dest[3] = w;
-		return dest;
-	};
+    /**
+     * Set the values of vec4
+     *
+     * @param {number} x The new x value
+     * @param {number} y The new y value
+     * @param {number} z The new z value
+     * @param {number} w The new w value
+     * @param {vec4} dest vec4 receiving new values
+     *
+     * @returns {vec4} dest
+     */
+    vec4.values = function (x, y, z, w, dest) {
+        dest[0] = x;
+        dest[1] = y;
+        dest[2] = z;
+        dest[3] = w;
+        return dest;
+    };
 
     /**
      * Negates the components of a vec4
@@ -3512,13 +3512,13 @@
         root.mat3 = mat3;
         root.mat4 = mat4;
         root.quat4 = quat4;
-		root.Vec2 = vec2;
-		root.Vec3 = vec3;
-		root.Vec4 = vec4;
-		root.Mat2 = mat2;
-		root.Mat3 = mat3;
-		root.Mat4 = mat4;
-		root.Quat4 = quat4;
+        root.Vec2 = vec2;
+        root.Vec3 = vec3;
+        root.Vec4 = vec4;
+        root.Mat2 = mat2;
+        root.Mat3 = mat3;
+        root.Mat4 = mat4;
+        root.Quat4 = quat4;
     }
 
     return {
@@ -3534,12 +3534,12 @@
         mat3: mat3,
         mat4: mat4,
         quat4: quat4,
-		Vec2: vec2,
-		Vec3: vec3,
-		Vec4: vec4,
-		Mat2: mat2,
-		Mat3: mat3,
-		Mat4: mat4,
-		Quat4: quat4
+        Vec2: vec2,
+        Vec3: vec3,
+        Vec4: vec4,
+        Mat2: mat2,
+        Mat3: mat3,
+        Mat4: mat4,
+        Quat4: quat4
     };
 }));
