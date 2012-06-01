@@ -3512,6 +3512,13 @@
         root.mat3 = mat3;
         root.mat4 = mat4;
         root.quat4 = quat4;
+		root.Vec2 = vec2;
+		root.Vec3 = vec3;
+		root.Vec4 = vec4;
+		root.Mat2 = mat2;
+		root.Mat3 = mat3;
+		root.Mat4 = mat4;
+		root.Quat4 = quat4;
     }
 
     return {
@@ -3526,6 +3533,13 @@
         mat2: mat2,
         mat3: mat3,
         mat4: mat4,
-        quat4: quat4
+        quat4: quat4,
+		Vec2: vec2,
+		Vec3: vec3,
+		Vec4: vec4,
+		Mat2: mat2,
+		Mat3: mat3,
+		Mat4: mat4,
+		Quat4: quat4
     };
 }));
